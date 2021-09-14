@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Nova postagem</mat-card-title>
+  </mat-card-header>
+  <div [formGroup]="postForm">
+    <div>
+      <mat-form-field>
+        <mat-label>Título</mat-label>
+        <input matInput formControlName="title" placeholder="Escreva o título..." [minLength]="3" [maxLength]="255"/>
+        <mat-error *ngIf="postForm.get('title')?.invalid">Título inválido</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Conteúdo</mat-label>
+        <textarea matInput formControlName="content" placeholder="Escreva o conteúdo..." [minLength]="3" [rows]="10"></textarea>
+        <mat-error *ngIf="postForm.get('content')?.invalid">Conteúdo inválido</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <mat-card-actions align="end">
+    <button mat-button color="warn" (click)="onCreatePost()" [disabled]="postForm.invalid">
+      Confirmar
+    </button>
+  </mat-card-actions>
+</mat-card>

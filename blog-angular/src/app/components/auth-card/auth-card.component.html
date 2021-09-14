@@ -1,0 +1,71 @@
+<div id="auth">
+  <mat-card id="auth-card">
+    <mat-card-header>
+      <mat-card-title>{{state}}</mat-card-title>
+    </mat-card-header>
+    <div *ngIf="isLogin()" [formGroup]="loginForm">
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="pat@example.com" formControlName="email" required>
+          <mat-error *ngIf="loginForm.get('email')?.invalid">Email inválido</mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Senha</mat-label>
+          <input matInput placeholder="Senha" formControlName="password" type="password" required/>
+          <mat-error *ngIf="loginForm.get('password')?.invalid">A senha é obrigatória</mat-error>
+        </mat-form-field>
+      </p>
+      <button mat-flat-button [disabled]="loginForm.invalid" (click)="confirmLogin()" color="warn">Entrar</button>
+    </div>
+    <div *ngIf="isRegister()" [formGroup]="registerForm">
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="firstName" required>
+          <mat-error *ngIf="registerForm.get('firstName')?.invalid">Nome é obrigatório</mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Sobrenome</mat-label>
+          <input matInput formControlName="lastName" required>
+          <mat-error *ngIf="registerForm.get('lastName')?.invalid">Sobrenome é obrigatório</mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="pat@example.com" formControlName="email" required>
+          <mat-error *ngIf="registerForm.get('email')?.invalid">Email inválido</mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Senha</mat-label>
+          <input matInput formControlName="password" type="password" required/>
+          <mat-error *ngIf="registerForm.get('password')?.invalid">A senha é obrigatória</mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Confirmar senha</mat-label>
+          <input matInput formControlName="confirmPassword" type="password" required [errorStateMatcher]="matcher"/>
+          <mat-error *ngIf="registerForm.hasError('notSame')">As senhas não correspondem</mat-error>
+        </mat-form-field>
+      </p>
+      <button mat-flat-button color="warn" [disabled]="registerForm.invalid" (click)="confirmCreateAccount()">Criar</button>
+    </div>
+    <mat-card-actions align="start">
+      <button mat-flat-button (click)="onCreateAccountClick()">Criar conta</button>
+      <button mat-flat-button (click)="onLoginClick()">Login</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

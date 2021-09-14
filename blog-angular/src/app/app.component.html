@@ -1,0 +1,23 @@
+<mat-toolbar color="warn">
+  <div id="nav-bar">
+    <div id="nav-bar-content">
+      <div id="nav-bar-left">
+        <div style="font-size: 1.5em" class="nav-bar-items">
+          Blog App
+        </div>
+      </div>
+      <div id="nav-bar-right">
+        <div (click)="onLoginClick()" *ngIf="!isLoggedIn()" class="nav-bar-items">
+          <mat-icon>account_circle</mat-icon>
+          <p>Login</p>
+        </div>
+        <div (click)="onLogoutClick()" *ngIf="isLoggedIn()" class="nav-bar-items">
+          <mat-icon>logout</mat-icon>
+          <p>Logout</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

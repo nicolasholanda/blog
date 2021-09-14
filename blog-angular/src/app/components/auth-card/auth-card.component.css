@@ -1,0 +1,27 @@
+#auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+#auth-card {
+  width: 100%;
+  max-width: 30em;
+  padding: 1.5em;
+}
+
+button {
+  margin: .5em;
+}
+
+p {
+  margin: 0;
+}
+
+mat-form-field {
+  width: 100%;
+}

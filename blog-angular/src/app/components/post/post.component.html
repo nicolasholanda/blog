@@ -1,0 +1,17 @@
+<mat-card style="margin-top: 3em">
+  <mat-card-header>
+    <mat-card-title>{{post.title}}</mat-card-title>
+    <mat-card-subtitle>{{post.user?.firstName + ' ' + post.user?.lastName}}</mat-card-subtitle>
+    <mat-card-subtitle>Criado em: {{post.creationDate | date: 'dd/MM/yyyy HH:mm:ss'}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p style="word-break: break-word">
+      {{post.content}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions align="start">
+    <div class="action-item">
+      <mat-icon color="warn">chat_bubble_outline</mat-icon>
+    </div>
+  </mat-card-actions>
+</mat-card>
