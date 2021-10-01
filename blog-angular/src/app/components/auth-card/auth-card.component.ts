@@ -15,6 +15,7 @@ import {AuthService} from "../../services/auth.service";
 import {NewUser} from "../../model/NewUser";
 import {MatBottomSheetRef} from "@angular/material/bottom-sheet";
 import {Credentials} from "../../model/Credentials";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-auth-card',
@@ -32,7 +33,8 @@ export class AuthCardComponent implements OnInit {
               private userService: UserService,
               private authService: AuthService,
               private messageService: MessageService,
-              private sheetRef: MatBottomSheetRef) {
+              private sheetRef: MatBottomSheetRef,
+              private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -62,6 +64,8 @@ export class AuthCardComponent implements OnInit {
           .subscribe(() => {
             this.sheetRef.dismiss(true);
             this.messageService.successMessage('Usuário criado e autenticado.');
+          }).add(() => {
+            this.router.navigate(['feed']);
           }),
         error => this.messageService.catchError(error.error)
     );
